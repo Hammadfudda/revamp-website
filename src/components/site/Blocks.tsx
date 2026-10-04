@@ -12,10 +12,24 @@ export function Eyebrow({ children, light = false }: { children: ReactNode; ligh
   );
 }
 
-export function PageHero({ eyebrow, title, lead, children }: { eyebrow: string; title: string; lead: string; children?: ReactNode }) {
+export function PageHero({ eyebrow, title, lead, children, image }: { eyebrow: string; title: string; lead: string; children?: ReactNode; image?: string }) {
   return (
     <section className="relative overflow-hidden bg-navy text-on-navy">
-      <div className="grid-lines absolute inset-0 opacity-60" aria-hidden />
+      {image && (
+        <>
+          <img
+            src={image}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover opacity-30"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50" aria-hidden />
+        </>
+      )}
+      <div className="grid-lines absolute inset-0 opacity-40" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 py-20 md:py-28 lg:px-8">
         <div className="reveal max-w-3xl">
           <Eyebrow light>{eyebrow}</Eyebrow>

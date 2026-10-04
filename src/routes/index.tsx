@@ -3,7 +3,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { PageHero, PrimaryLink, GhostLink, Eyebrow, ProcessSteps, CtaBand } from "@/components/site/Blocks";
 import { DemoDashboard } from "@/components/site/DemoDashboard";
 import { Reveal } from "@/components/site/Reveal";
-import { SERVICES, LEAVE_FEATURES } from "@/lib/site";
+import { SERVICES, LEAVE_FEATURES, NICHES, HERO_IMAGE } from "@/lib/site";
 import { PORTFOLIO, CATEGORY_LABEL } from "@/lib/portfolio";
 
 export const Route = createFileRoute("/")({
@@ -41,13 +41,29 @@ function Index() {
   return (
     <>
       <PageHero
-        eyebrow="Finance, Data, Technology"
-        title="Your books handled properly, your numbers finally making sense, and software that fits how you actually work."
-        lead="Most businesses don't lose money because they're doing something wrong. They lose it because nobody has time to keep the books current, the reports don't answer the real questions, and the tools were never built for how the team actually works. Nedd Digital fixes all three, under one roof."
+        eyebrow="Bookkeeping, data and digital"
+        title="Your books, your numbers, your website. Handled."
+        lead="Nedd Digital looks after the finance and technology side for small businesses, online stores and charities, so you can spend your time on the work you started this for. Clean books, clear reports and a website people trust."
+        image={HERO_IMAGE}
       >
         <PrimaryLink to="/contact">Book a free consultation</PrimaryLink>
         <GhostLink to="/services">Explore services</GhostLink>
       </PageHero>
+
+      <section className="mx-auto max-w-7xl px-5 pt-20 lg:px-8">
+        <Eyebrow>Who we work with</Eyebrow>
+        <h2 className="max-w-2xl text-3xl font-semibold text-navy md:text-4xl">Different organizations, the same need for numbers you can trust.</h2>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {NICHES.map((n, i) => (
+            <Reveal key={n.title} delay={i * 80}>
+              <div className="h-full border-t-2 border-accent pt-5">
+                <h3 className="text-lg font-semibold text-navy">{n.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{n.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
         <Eyebrow>What we do</Eyebrow>
@@ -72,7 +88,7 @@ function Index() {
           <div>
             <Eyebrow>Power BI</Eyebrow>
             <h2 className="text-3xl font-semibold text-navy md:text-4xl">Your numbers, at a glance.</h2>
-            <p className="mt-4 text-muted-foreground">Most business owners can tell you what their revenue was last month. Fewer can tell you which three customers are carrying the business, or how long cash actually lasts if a slow month hits. That's the gap a proper dashboard closes. Every bookkeeping package includes a free historical Power BI dashboard covering up to three years of your data, so you start seeing the picture from day one, not six months in.</p>
+            <p className="mt-4 text-muted-foreground">Most owners can tell you last month's sales. Fewer can say which three customers carry the business, or how long cash would last in a slow month. A proper dashboard answers both. Every bookkeeping package includes a free historical Power BI dashboard covering up to three years of your data, so you see the full picture from day one.</p>
             <div className="mt-8"><PrimaryLink to="/services/$slug" params={{ slug: "power-bi-data-analytics" }}>See dashboards</PrimaryLink></div>
           </div>
           <DemoDashboard compact />
@@ -84,7 +100,7 @@ function Index() {
           <div>
             <Eyebrow>Our product</Eyebrow>
             <h2 className="text-3xl font-semibold text-navy md:text-4xl">Leave Management Software</h2>
-            <p className="mt-4 text-muted-foreground">Built because we needed it ourselves first. Employees request time off, managers approve it, and everyone can see real leave balances without a spreadsheet getting passed around by email. Requests, approvals and live balances for employees, managers and admins, all in one place.</p>
+            <p className="mt-4 text-muted-foreground">We built it because we needed it ourselves. Employees ask for time off, managers approve it, and everyone sees real leave balances without a spreadsheet being passed around by email.</p>
             <div className="mt-8"><PrimaryLink to="/products/leave-management">View the product</PrimaryLink></div>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
@@ -133,7 +149,7 @@ function Index() {
       </section>
 
       <ProcessSteps steps={STEPS} />
-      <CtaBand title="Let's talk about your business." body="Tell us what's slowing you down and we'll reply within 24 hours with clear next steps, not a sales pitch." cta="Contact us" />
+      <CtaBand title="Let's talk about your business." body="Tell us what is slowing you down and we will reply within 24 hours with clear next steps, not a sales pitch." cta="Contact us" />
     </>
   );
 }
