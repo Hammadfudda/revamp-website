@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { PageHero, CtaBand, Eyebrow } from "@/components/site/Blocks";
+import { PageHero, CtaBand, Eyebrow, ServiceCard } from "@/components/site/Blocks";
 import { SERVICES } from "@/lib/site";
 
 export const Route = createFileRoute("/services/")({
@@ -26,10 +25,7 @@ function Page() {
           <h2 className="max-w-2xl text-3xl font-semibold text-navy md:text-4xl">Everything we can help you with.</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
-              <Link key={s.slug} to="/services/$slug" params={{ slug: s.slug }} className="rounded-2xl border bg-card p-6 transition-shadow hover:shadow-lg">
-                <h3 className="text-lg font-semibold text-navy">{s.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
-              </Link>
+              <ServiceCard key={s.slug} service={s} />
             ))}
           </div>
       </section>

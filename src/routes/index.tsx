@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check } from "lucide-react";
-import { PageHero, PrimaryLink, GhostLink, Eyebrow, ProcessSteps, CtaBand } from "@/components/site/Blocks";
+import { PageHero, PrimaryLink, GhostLink, Eyebrow, ProcessSteps, CtaBand, ServiceCard, TrustStrip } from "@/components/site/Blocks";
 import { DemoDashboard } from "@/components/site/DemoDashboard";
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES, LEAVE_FEATURES, NICHES, HERO_IMAGE } from "@/lib/site";
@@ -50,6 +50,8 @@ function Index() {
         <GhostLink to="/services">Explore services</GhostLink>
       </PageHero>
 
+      <TrustStrip />
+
       <section className="mx-auto max-w-7xl px-5 pt-20 lg:px-8">
         <Eyebrow>Who we work with</Eyebrow>
         <h2 className="max-w-2xl text-3xl font-semibold text-navy md:text-4xl">Different organizations, the same need for numbers you can trust.</h2>
@@ -71,13 +73,7 @@ function Index() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => (
             <Reveal key={service.slug} delay={i * 60}>
-              <Link to="/services/$slug" params={{ slug: service.slug }} className="group flex h-full items-start justify-between gap-4 rounded-2xl border bg-card p-6">
-                <div>
-                  <h3 className="font-semibold text-navy">{service.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.short}</p>
-                </div>
-                <ArrowUpRight className="h-5 w-5 shrink-0 text-navy-soft transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
+              <ServiceCard service={service} />
             </Reveal>
           ))}
         </div>
